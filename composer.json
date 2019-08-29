@@ -40,6 +40,6 @@
     }
   },
   "archive": {
-    "exclude": ["Makefile", "box.json"]
+    "exclude": ["Makefile", "build"]
   }
 }

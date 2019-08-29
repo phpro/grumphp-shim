@@ -1,0 +1,17 @@
+{
+  "alias": "grumphp.phar",
+  "banner": false,
+  "force-autodiscovery": true,
+  "compactors": [
+    "KevinGH\\Box\\Compactor\\PhpScoper"
+  ],
+  "files": [
+    "LICENSE"
+  ],
+  "directories": [
+    "resources",
+    "src",
+    "vendor"
+  ],
+  "output": "grumphp.phar"
+}
