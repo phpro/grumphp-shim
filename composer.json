@@ -1,0 +1,45 @@
+{
+  "name": "phpro/grumphp-shim",
+  "description": "GrumPHP Phar distribution",
+  "type": "composer-plugin",
+  "license": ["MIT"],
+  "authors": [
+    {
+      "name": "Toon Verwerft",
+      "email": "toon.verwerft@phpro.be"
+    },
+    {
+      "name": "Community",
+      "homepage": "https://github.com/phpro/grumphp/graphs/contributors"
+    }
+  ],
+  "bin": [
+    "grumphp",
+    "grumphp.phar"
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*",
+    "composer-plugin-api": "~1.0"
+  },
+  "require-dev": {
+    "humbug/box": "^3.8"
+  },
+  "replace": {
+    "phpro/grumphp": "self.version"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "class": "GrumPHP\\Composer\\GrumPHPPlugin"
+  },
+  "autoload": {
+    "psr-4": {
+      "GrumPHP\\": "src"
+    }
+  },
+  "archive": {
+    "exclude": ["Makefile", "box.json"]
+  }
+}
