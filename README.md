@@ -11,11 +11,11 @@ This means you'll need to configure a repository in the meantime:
 composer config repositories.grumphp-shim vcs https://github.com/phpro/grumphp-shim
 ```
 
-Install the package
+Install the package. (Currently dev-master only!)
 
 ```bash
 
-composer require --dev phpro/grumphp-shim
+composer require --dev phpro/grumphp-shim:dev-master
 ```
 
 and use it like the original executable
