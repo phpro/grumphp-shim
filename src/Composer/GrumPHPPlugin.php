@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GrumPHP\Plugin;
+namespace GrumPHP\Composer;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
