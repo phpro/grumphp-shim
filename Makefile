@@ -9,8 +9,8 @@ compile:
 	@echo Compiling $(TAG)
 	$(eval BUILD_DIR := $(shell mktemp -d -t grumphp-shim-build))
 	@echo Cloning GrumPHP $(TAG) in directory $(BUILD_DIR)
-	git clone git@github.com:veewee/grumphp.git $(BUILD_DIR)
-	git --work-tree=$(BUILD_DIR) --git-dir='$(BUILD_DIR)/.git' checkout improved-paths
+	git clone git@github.com:phpro/grumphp.git $(BUILD_DIR)
+	git --work-tree=$(BUILD_DIR) --git-dir='$(BUILD_DIR)/.git' checkout 'tags/v$(TAG)'
 	cp build/* '$(BUILD_DIR)'
 	composer install --working-dir='$(BUILD_DIR)' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader
 	./vendor/bin/box compile --working-dir='$(BUILD_DIR)'
