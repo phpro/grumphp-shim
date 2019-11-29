@@ -24,4 +24,7 @@ compile:
 	cp '$(BUILD_DIR)/grumphp.phar' '$(ROOT_DIR)'
 	gpg --local-user toonverwerft@gmail.com --armor --detach-sign grumphp.phar
 	rm -rf $(BUILD_DIR)
-	# TODO : Tag release
+	# Release tag
+	git add -A
+	git commit -m '$(TAG) release'
+	git tag -s 'v$(TAG)' -m'Version $(TAG)'
