@@ -18,6 +18,8 @@ compile:
 	rm -rf '$(BUILD_DIR)/vendor'
 	composer update --dev --working-dir='$(BUILD_DIR)' --no-interaction
 	cd $(BUILD_DIR) && ./grumphp.phar run --testsuite=git_pre_commit && cd $(ROOT_DIR)
+	# Copy composer plugin
+	cp '$(BUILD_DIR)/src/Composer/GrumPHPPlugin.php' '$(ROOT_DIR)/src/Composer/GrumPHPPlugin.php'
 	# All good : lets finish up
 	cp '$(BUILD_DIR)/grumphp.phar' '$(ROOT_DIR)'
 	gpg --local-user toonverwerft@gmail.com --armor --detach-sign grumphp.phar
