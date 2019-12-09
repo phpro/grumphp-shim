@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-$(which php) "$(dirname "$0")/grumphp.phar" $@
+$(which php) "$(dirname "$0")/grumphp.phar" "$@"
