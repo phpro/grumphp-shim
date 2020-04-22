@@ -36,12 +36,11 @@ testlocal:
 	@echo Copying GrumPHP to directory $(BUILD_DIR)
 	cp -r $(GRUMPHP_DIR)/. $(BUILD_DIR)
 	cp build/* '$(BUILD_DIR)'
+	# Remove vendor and lock to make sure a unique composer autoloader is created
+	rm -rf $(BUILD_DIR)/vendor
+	rm $(BUILD_DIR)/composer.lock
 	composer install --working-dir='$(BUILD_DIR)' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader
 	./vendor/bin/box compile --working-dir='$(BUILD_DIR)' -vvv
-	# Run sanity Check:
-	rm -rf '$(BUILD_DIR)/vendor'
-	composer update --dev --working-dir='$(BUILD_DIR)' --no-interaction
-	cd $(BUILD_DIR) && ./grumphp.phar run --testsuite=git_pre_commit && cd $(ROOT_DIR)
 	# All good : lets finish up
 	cp '$(BUILD_DIR)/grumphp.phar' '$(ROOT_DIR)'
-	echo $(BUILD_DIR)
+	rm -rf $(BUILD_DIR)
