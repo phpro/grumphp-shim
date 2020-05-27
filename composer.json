@@ -20,7 +20,7 @@
   "require": {
     "php": "^7.1",
     "ext-json": "*",
-    "composer-plugin-api": "~1.0"
+    "composer-plugin-api": "~1.0 || ~2.0"
   },
   "require-dev": {
     "humbug/box": "^3.8.4",
