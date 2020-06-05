@@ -5,6 +5,7 @@ declare(strict_types=1);
 return [
     'whitelist' => [
         'GrumPHP\*',
-        'PhpParser\*'
+        'PhpParser\*',
+        'Composer\*'
     ],
 ];

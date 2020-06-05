@@ -13,9 +13,12 @@ compile:
 	git clone git@github.com:phpro/grumphp.git $(BUILD_DIR)
 	git --work-tree=$(BUILD_DIR) --git-dir='$(BUILD_DIR)/.git' checkout 'tags/v$(TAG)'
 	cp build/* '$(BUILD_DIR)'
+	cp src/Composer/FixBrokenStaticAutoloader.php '$(BUILD_DIR)/src/Composer'
+	php $(BUILD_DIR)/fix-some-stuff-in-composer.php
 	composer install --working-dir='$(BUILD_DIR)' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader
 	./vendor/bin/box compile --working-dir='$(BUILD_DIR)'
 	# Run sanity Check:
+	mv '$(BUILD_DIR)/composer.json.backup' '$(BUILD_DIR)/composer.json'
 	rm -rf '$(BUILD_DIR)/vendor'
 	composer update --dev --working-dir='$(BUILD_DIR)' --no-interaction
 	cd $(BUILD_DIR) && ./grumphp.phar run --testsuite=git_pre_commit && cd $(ROOT_DIR)
