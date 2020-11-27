@@ -7,7 +7,7 @@ jobs:
         strategy:
             matrix:
                 operating-system: [ubuntu-latest]
-                php-versions: ['7.4', '8.0']
+                php-versions: ['7.3', '7.4', '8.0']
             fail-fast: false
         name: PHP ${{ matrix.php-versions }} @ ${{ matrix.operating-system }}
         steps:
@@ -24,22 +24,9 @@ jobs:
                 php -v
                 php -m
                 composer --version
-            - name: Get composer cache directory
-              id: composercache
-              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-            - name: Cache dependencies
-              uses: actions/cache@v2
-              with:
-                  path: ${{ steps.composercache.outputs.dir }}
-                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-                  restore-keys: ${{ runner.os }}-composer-
-            - name: Install dependencies
-              run: composer update --prefer-dist --no-progress --no-suggest ${{ matrix.composer-options }}
-            - name: Set git variables
-              run: |
-                git config --global user.email "you@example.com"
-                git config --global user.name "Your Name"
             - name: Verify signature
-              run: gpg --verify grumphp.phar.asc grumphp.phar
+              run: |
+                gpg --keyserver hkps.pool.sks-keyservers.net --recv-keys 647EC40181B397090BB4E563BB5F005D6FFDD89E
+                gpg --verify grumphp.phar.asc grumphp.phar
             - name: Verify it can execute the grumphp command
               run: php grumphp.phar
