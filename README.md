@@ -18,6 +18,4 @@ Check out the main repo for more options and release notes
  [https://github.com/phpro/grumphp](https://github.com/phpro/grumphp).
 
 
-## TODO
 
-- Optionally: Inject https://github.com/humbug/phar-updater during build
