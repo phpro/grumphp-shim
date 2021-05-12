@@ -23,7 +23,7 @@
     "composer-plugin-api": "~1.0 || ~2.0"
   },
   "require-dev": {
-    "humbug/box": "^3.9.0",
+    "humbug/box": "^3.12.2",
     "jetbrains/phpstorm-stubs": "dev-master@dev"
   },
   "replace": {
