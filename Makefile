@@ -32,8 +32,8 @@ compile:
 	rm -rf $(BUILD_DIR)
 	# Release tag
 	git add -A
-	#git commit -m '$(TAG) release'
-	#git tag -s 'v$(TAG)' -m'Version $(TAG)'
+	git commit -m '$(TAG) release'
+	git tag -s 'v$(TAG)' -m'Version $(TAG)'
 
 testlocal:
 	$(if $(GRUMPHP_DIR),,$(error GRUMPHP_DIR is not defined. Pass via "make testlocal GRUMPHP_DIR=/path/to/grumphp"))
