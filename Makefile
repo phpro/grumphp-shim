@@ -7,6 +7,7 @@ help:
 
 compile:
 	$(if $(TAG),,$(error TAG is not defined. Pass via "make compile TAG=4.2.1"))
+	$(if $(PHP),,$(error PHP is not defined. Pass via "make compile PHP=7.4"))
 	@echo Compiling $(TAG)
 	$(eval BUILD_DIR := $(shell mktemp -d -t grumphp-shim-build))
 	@echo Cloning GrumPHP $(TAG) in directory $(BUILD_DIR)
@@ -15,6 +16,7 @@ compile:
 	cp build/* '$(BUILD_DIR)'
 	cp src/Composer/FixBrokenStaticAutoloader.php '$(BUILD_DIR)/src/Composer'
 	php $(BUILD_DIR)/fix-some-stuff-in-composer.php
+	composer --working-dir='$(BUILD_DIR)' config platform.php '$(PHP)'
 	composer install --working-dir='$(BUILD_DIR)' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader
 	./vendor/bin/box compile --working-dir='$(BUILD_DIR)'
 	# Run sanity Check:
@@ -30,11 +32,12 @@ compile:
 	rm -rf $(BUILD_DIR)
 	# Release tag
 	git add -A
-	git commit -m '$(TAG) release'
-	git tag -s 'v$(TAG)' -m'Version $(TAG)'
+	#git commit -m '$(TAG) release'
+	#git tag -s 'v$(TAG)' -m'Version $(TAG)'
 
 testlocal:
 	$(if $(GRUMPHP_DIR),,$(error GRUMPHP_DIR is not defined. Pass via "make testlocal GRUMPHP_DIR=/path/to/grumphp"))
+	$(if $(PHP),,$(error PHP is not defined. Pass via "make testlocal PHP=7.4"))
 	$(eval BUILD_DIR := $(shell mktemp -d -t grumphp-shim-build))
 	@echo Copying GrumPHP to directory $(BUILD_DIR)
 	cp -r $(GRUMPHP_DIR)/. $(BUILD_DIR)
@@ -42,6 +45,7 @@ testlocal:
 	# Remove vendor and lock to make sure a unique composer autoloader is created
 	rm -rf $(BUILD_DIR)/vendor
 	rm $(BUILD_DIR)/composer.lock
+	composer --working-dir='$(BUILD_DIR)' config platform.php '$(PHP)'
 	composer install --working-dir='$(BUILD_DIR)' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader
 	./vendor/bin/box compile --working-dir='$(BUILD_DIR)' -vvv
 	# All good : lets finish up
