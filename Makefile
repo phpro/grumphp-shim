@@ -7,7 +7,7 @@ help:
 
 compile:
 	$(if $(TAG),,$(error TAG is not defined. Pass via "make compile TAG=4.2.1"))
-	$(if $(PHP),,$(error PHP is not defined. Pass via "make compile PHP=7.4"))
+	$(if $(PHP),,$(error PHP is not defined. Pass via "make compile PHP=7.4.19"))
 	@echo Compiling $(TAG)
 	$(eval BUILD_DIR := $(shell mktemp -d -t grumphp-shim-build))
 	@echo Cloning GrumPHP $(TAG) in directory $(BUILD_DIR)
