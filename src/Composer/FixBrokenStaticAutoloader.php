@@ -22,7 +22,7 @@ class FixBrokenStaticAutoloader
         $event->getIO()->write(["Fixing $static_loader_path"]);
         $static_loader = file_get_contents($static_loader_path);
         $static_loader = \preg_replace(
-            '/\'([A-Za-z0-9]*?)\' => __DIR__ \. (.*?),/',
+            '/\'([a-z0-9]*?)\' => __DIR__ \. (.*?),/',
             '\'scoped$1\' => __DIR__ . $2,',
             $static_loader
         );
