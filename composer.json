@@ -20,6 +20,7 @@
   "require": {
     "php": "^7.3 || ^8.0",
     "ext-json": "*",
+    "ext-intl": "*",
     "composer-plugin-api": "~1.0 || ~2.0"
   },
   "require-dev": {
