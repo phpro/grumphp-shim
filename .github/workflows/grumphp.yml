@@ -26,7 +26,7 @@ jobs:
                 composer --version
             - name: Verify signature
               run: |
-                gpg --keyserver hkps.pool.sks-keyservers.net --recv-keys 647EC40181B397090BB4E563BB5F005D6FFDD89E 5B5CD58A29992D51F21758DE3BA8E426E02B27B6
+                gpg --keyserver hkps.pool.sks-keyservers.net --recv-keys 647EC40181B397090BB4E563BB5F005D6FFDD89E 5B5CD58A29992D51F21758DE3BA8E426E02B27B6 1954FD4AFA65C82E40CB1A13AA36B9960B5B823D
                 gpg --verify grumphp.phar.asc grumphp.phar
             - name: Verify it can execute the grumphp command
               run: php grumphp.phar

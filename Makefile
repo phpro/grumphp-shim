@@ -48,6 +48,7 @@ prepare:
 	# All good : lets finish up
 	cp '$(BUILD_DIR)/grumphp.phar' '$(ROOT_DIR)'
 	gpg --local-user toonverwerft@gmail.com --armor --detach-sign grumphp.phar
+	gpg --verify grumphp.phar.asc grumphp.phar
 
 sanity:
 	$(if $(BUILD_DIR),,$(error BUILD_DIR is not defined. Pass via "make sanity BUILD_DIR=/tmp/prepared-grumphp-src"))
