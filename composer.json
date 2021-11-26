@@ -18,9 +18,9 @@
     "grumphp.phar"
   ],
   "require": {
-    "php": "^7.3 || ^8.0",
+    "php": "^8.0",
     "ext-json": "*",
-    "composer-plugin-api": "~1.0 || ~2.0"
+    "composer-plugin-api": "~2.0"
   },
   "require-dev": {
     "humbug/box": "^3.12.2",
