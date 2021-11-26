@@ -58,6 +58,6 @@ sanity:
 	cd $(BUILD_DIR) && ./grumphp.phar run --testsuite=git_pre_commit && cd $(ROOT_DIR)
 
 cleanup:
-	$(if $(BUILD_DIR),,$(error BUILD_DIR is not defined. Pass via "make sanity BUILD_DIR=/tmp/prepared-grumphp-src"))
+	$(if $(BUILD_DIR),,$(error BUILD_DIR is not defined. Pass via "make cleanup BUILD_DIR=/tmp/prepared-grumphp-src"))
 	rm -rf $(BUILD_DIR)
 
