@@ -27,15 +27,22 @@ $polyfillsStubs = array_map(
 );
 
 return [
-    'whitelist' => [
-        'GrumPHP\*',
-        'PhpParser\*',
-        'Composer\*',
-        'Symfony\\Polyfill\\*',
+    'exclude-namespaces' => [
+        'GrumPHP',
+        'PhpParser',
+        'Composer',
+        'Symfony\Polyfill',
     ],
-    'files-whitelist' => [
+    'exclude-files' => [
         ...$polyfillsBootstraps,
         ...$polyfillsStubs
     ],
+    /*
+     * Expose global symbols fixes issues like `trigger_deprecation()` inside Symfony.
+     * These global function gets scoped, but the usage is not replaced.
+     */
+    'expose-global-functions' => true,
+    'expose-global-classes' => true,
+    'expose-global-constants' => true,
     'patchers' => []
 ];
