@@ -14,7 +14,7 @@ use Composer\Script\Event;
  */
 class FixBrokenStaticAutoloader
 {
-    public static function fix(Event $event)
+    public static function fix(Event $event): void
     {
         $autoloadPath = getcwd().'/vendor/composer';
 
