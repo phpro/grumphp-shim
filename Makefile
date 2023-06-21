@@ -45,6 +45,7 @@ prepare:
 	php -d error_reporting='(E_ALL & ~E_DEPRECATED)' ./vendor/bin/box compile --working-dir='$(BUILD_DIR)' -vvv
 	# Copy composer plugin
 	cp '$(BUILD_DIR)/src/Composer/GrumPHPPlugin.php' '$(ROOT_DIR)/src/Composer/GrumPHPPlugin.php'
+	cp '$(BUILD_DIR)/composer.lock' '$(ROOT_DIR)/phar.composer.lock'
 	# All good : lets finish up
 	cp '$(BUILD_DIR)/grumphp.phar' '$(ROOT_DIR)'
 	gpg --local-user toonverwerft@gmail.com --armor --detach-sign grumphp.phar
