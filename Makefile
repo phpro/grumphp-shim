@@ -34,9 +34,13 @@ testlocal:
 	make prepare BUILD_DIR=$(BUILD_DIR) PHP=$(PHP)
 	make cleanup BUILD_DIR=$(BUILD_DIR)
 
+systemupdate:
+	composer self-update
+
 prepare:
 	$(if $(PHP),,$(error PHP is not defined. Pass via "make prepare PHP=7.4.19"))
 	$(if $(BUILD_DIR),,$(error BUILD_DIR is not defined. Pass via "make prepare BUILD_DIR=/tmp/prepared-grumphp-src"))
+	make systemupdate
 	cp build/* '$(BUILD_DIR)'
 	cp src/Composer/FixBrokenStaticAutoloader.php '$(BUILD_DIR)/src/Composer'
 	php $(BUILD_DIR)/fix-some-stuff-in-composer.php
