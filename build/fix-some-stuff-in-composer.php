@@ -10,9 +10,6 @@ file_put_contents(
     $composerFile,
     json_encode(
         array_merge_recursive($composerData, [
-            'require' => [
-                'nikic/php-parser' => '~4.0',
-            ],
             'scripts' => [
                 'post-autoload-dump' => [
                     'GrumPHP\\Composer\\FixBrokenStaticAutoloader::fix'
