@@ -39,7 +39,7 @@ prepare:
 	php $(BUILD_DIR)/fix-some-stuff-in-composer.php
 	composer install --working-dir='$(BUILD_DIR)' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader
 	# Bundle suggested optional packages:
-	composer require --working-dir='$(BUILD_DIR)' 'nikic/php-parser:~4.0' --update-no-dev --no-interaction
+	composer require --working-dir='$(BUILD_DIR)' 'nikic/php-parser:~5.0' --update-no-dev --no-interaction
 	php -d error_reporting='(E_ALL & ~E_DEPRECATED)' ./vendor/bin/box compile --working-dir='$(BUILD_DIR)' -vvv
 	# Copy composer plugin
 	cp '$(BUILD_DIR)/src/Composer/GrumPHPPlugin.php' '$(ROOT_DIR)/src/Composer/GrumPHPPlugin.php'
