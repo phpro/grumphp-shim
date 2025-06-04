@@ -210,7 +210,7 @@ class GrumPHPPlugin implements PluginInterface, EventSubscriberInterface
     private function runGrumPhpCommand(string $command): void
     {
         if (!$grumphp = $this->detectGrumphpExecutable()) {
-            $this->pluginErrored('no-exectuable');
+            $this->pluginErrored('no-executable');
             return;
         }
 
