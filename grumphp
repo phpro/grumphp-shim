@@ -9,5 +9,4 @@ if (!in_array('phar', stream_get_wrappers(), true)) {
 
 $phar = __DIR__ . '/grumphp.phar';
 
-require "phar://$phar/.box/bin/check-requirements.php";
 require "phar://$phar/bin/grumphp";
