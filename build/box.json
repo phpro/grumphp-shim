@@ -2,6 +2,7 @@
   "alias": "grumphp.phar",
   "banner": false,
   "force-autodiscovery": true,
+  "check-requirements": false,
   "compactors": [
     "KevinGH\\Box\\Compactor\\PhpScoper"
   ],
