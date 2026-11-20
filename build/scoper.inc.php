@@ -32,6 +32,10 @@ return [
         'PhpParser',
         'Composer',
         'Symfony\Polyfill',
+        // Native classes since PHP 8.6 that PHP-Scoper does not know as internal yet.
+        // Revolt's IoPollDriver uses them when running on PHP 8.6+.
+        'Io\Poll',
+        'Time',
     ],
     'exclude-files' => [
         ...$polyfillsBootstraps,
