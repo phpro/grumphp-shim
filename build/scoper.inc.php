@@ -37,6 +37,10 @@ return [
         'Io\Poll',
         'Time',
     ],
+    // Native global class since PHP 8.6, used by Revolt's IoPollDriver.
+    'exclude-classes' => [
+        'StreamPollHandle',
+    ],
     'exclude-files' => [
         ...$polyfillsBootstraps,
         ...$polyfillsStubs
