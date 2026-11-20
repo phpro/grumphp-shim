@@ -34,8 +34,8 @@ testlocal:
 
 prepare:
 	$(if $(BUILD_DIR),,$(error BUILD_DIR is not defined. Pass via "make prepare BUILD_DIR=/tmp/prepared-grumphp-src"))
-	# Box scopes with the phpstorm stubs from this vendor dir: stale stubs prefix native classes of newer PHP versions.
-	composer install --working-dir='$(ROOT_DIR)' --no-interaction
+	# Box decides which classes are native from the phpstorm stubs in vendor, so every build takes the newest ones. The release commit records the lock.
+	composer update --working-dir='$(ROOT_DIR)' --no-interaction
 	cp build/* '$(BUILD_DIR)'
 	cp src/Composer/FixBrokenStaticAutoloader.php '$(BUILD_DIR)/src/Composer'
 	php $(BUILD_DIR)/fix-some-stuff-in-composer.php
